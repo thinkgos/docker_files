@@ -1,0 +1,38 @@
+version: "3"
+services:
+  node-exporter:
+    image: prom/node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    ports:
+      - 9100:9100
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - $PWD/prometheus:/etc/prometheus
+    ports:
+      - 9090:9090
+    depends_on:
+      - node-exporter
+  grafana:
+    image: grafana/grafana
+    volumes:
+      - $PWD/grafana:/var/lib/grafana
+    ports:
+      - 3000:3000
+  nginx:
+    image: nginx
+    volumes:
+      - $PWD/static:/usr/share/nginx/static:ro
+      - $PWD/nginx/logs:/var/log/nginx
+      - $PWD/nginx:/etc/nginx
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_HOST=mofz.top
+      - NGINX_PORT=80
+    command: ['nginx','-g','daemon off;']
+
+
