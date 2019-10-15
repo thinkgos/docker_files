@@ -1,22 +1,20 @@
-
 version: "3.1"
+
 services:
   mysql:
     image: mysql:latest
     ports:
-      - "3306:3306"
-      - "33060:33060"
+      - 3306:3306
+      - 33060:33060
     restart: always
-#    volumes:
-#      - ./mysql/conf/conf.d:/etc/mysql/conf.d
-#      - ./mysql/conf/init.d:/docker-entrypoint-initdb.d
-#      - ./mysql/logs:/logs
-#      - ./mysql/data:/var/lib/mysql
+    volumes:
+      - $PWD/conf.d:/etc/mysql/conf.d  # 配置文件
+#      - $PWD/data:/var/lib/mysql   # 数据存储位置挂载
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: db_monitor
-      MYSQL_USER: monitor
-      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456 # 强制,超级用户账号密码
+      MYSQL_DATABASE: monitor # 可选,启动时创建指定的数据库名称
+      MYSQL_USER: monitor # 可选,授于指定MYSQL_DATABASE 超级权限
+      MYSQL_PASSWORD: 123456 # 可选,授于指定MYSQL_DATABASE 超级权限
       TZ: Asia/Shanghai
 
     
