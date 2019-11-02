@@ -35,7 +35,7 @@ services:
   prometheus:
     image: prom/prometheus
     volumes:
-      - $PWD/prometheus:/etc/prometheus:rw
+      - $PWD/prometheus:/etc/prometheus
     ports:
       - 9090:9090
     depends_on:
@@ -43,7 +43,7 @@ services:
   grafana:
     image: grafana/grafana
     volumes:
-      - $PWD/grafana:/var/lib/grafana:rw
+      - $PWD/grafana:/var/lib/grafana # 数据库位置
     ports:
       - 3000:3000
     depends_on:
