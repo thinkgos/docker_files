@@ -20,7 +20,7 @@ services:
     image: redis
     volumes:
       - $PWD/redis/conf:/usr/local/etc/redis
-      #- $PWD/data:/data # 持久化数据挂载
+      - $PWD/data:/data # 持久化数据挂载
     ports:
       - 6379:6379
 
@@ -63,4 +63,13 @@ services:
       - grafana
       - prometheus
     command: ['nginx','-g','daemon off;']
+
+  filebrowser:
+    image: filebrowser/filebrowser
+    volumes:
+      - $PWD/filebrowser/files:/srv
+      - $PWD/filebrowser/database.db:/database.db
+      - $PWD/filebrowser/.filebrowser.json:/.filebrowser.json
+    ports:
+      - 9091:9091
     
