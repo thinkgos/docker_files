@@ -1,0 +1,26 @@
+version: "3.1"
+services:
+  filebrowser:
+    image: filebrowser/filebrowser
+    volumes:
+      - /opt/filebrowser/files:/srv
+      - /opt/filebrowser/database.db:/database.db
+      - /opt/filebrowser/.filebrowser.json:/.filebrowser.json
+    ports:
+      - 9091:9091
+  nginx:
+    image: nginx
+    volumes:
+      - /usr/share/nginx/static:/usr/share/nginx/static:ro
+      - /var/log/nginx:/var/log/nginx
+      - /etc/nginx:/etc/nginx
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_HOST=mofz.top
+      - NGINX_PORT=80
+    depends_on:
+      - filebrowser
+    command: ['nginx','-g','daemon off;']
+
+
