@@ -25,7 +25,7 @@ services:
       - 6379:6379
 
   node-exporter:
-    image: prom/node-exporter
+    image: prom/node-exporter:v1.0.1
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -33,7 +33,7 @@ services:
     ports:
       - 9100:9100
   prometheus:
-    image: prom/prometheus
+    image: prom/prometheus:v2.19.2
     volumes:
       - $PWD/prometheus:/etc/prometheus
     ports:
@@ -41,7 +41,7 @@ services:
     depends_on:
       - node-exporter
   grafana:
-    image: grafana/grafana
+    image: grafana/grafana:7.1.0
     volumes:
       - $PWD/grafana:/var/lib/grafana # 数据库位置
     ports:
