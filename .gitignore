@@ -1,4 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
+lnmp/mysql/data
+lnmp/nginx/logs
 mysql/mysql/data
 minio/minio/data
