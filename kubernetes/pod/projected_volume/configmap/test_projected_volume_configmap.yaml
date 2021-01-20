@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: vol-test-pod
+  name: test-projected-configmap-volume
 spec:
   containers:
-    - name: test-container
+    - name: test-configmap-volume
       image: busybox:1.32.0
       imagePullPolicy: IfNotPresent
       args:
