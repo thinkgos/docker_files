@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: init-demo
+spec:
+  initContainers:
+    - name: install
+      image: busybox:1.32.0
+      command:
+        - touch
+        - /work-dir/index.html
+      volumeMounts:
+        - name: workdir
+          mountPath: "/work-dir"
+  containers:
+    - name: init-container
+      image: thinkgos/helloworld:v1
+      ports:
+        - containerPort: 80
+      readinessProbe:
+        exec:
+          command:
+            - cat
+            - /ready/index.html
+      volumeMounts:
+        - name: workdir
+          mountPath: /ready
+  volumes:
+    - name: workdir
+      emptyDir: {}
