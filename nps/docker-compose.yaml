@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  nps:
+    image: ffdfgdfg/nps:v0.26.9
+    volumes:
+    - $PWD/conf:/conf
+    network_mode: host
