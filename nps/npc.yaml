@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  npc:
+    image: ffdfgdfg/npc:v0.26.9
+    volumes:
+      - $PWD/conf:/conf
+    network_mode: host
+    command:
+      - -config=/conf/npc.conf
