@@ -1,5 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
+influxdb/data
 lnmp/mysql/data
 lnmp/nginx/logs
 mysql/mysql/data
