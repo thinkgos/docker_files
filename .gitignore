@@ -1,7 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea
-influxdb/data
-lnmp/mysql/data
-lnmp/nginx/logs
-mysql/mysql/data
-minio/minio/data
+docker-compose/influxdb/data
+docker-compose/lnmp/mysql/data
+docker-compose/lnmp/nginx/logs
+docker-compose/mysql/mysql/data
+docker-compose/minio/minio/data
